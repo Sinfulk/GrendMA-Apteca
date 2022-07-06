@@ -18,6 +18,8 @@
   "homepage": "https://github.com/Sinfulk/GrendMA-Apteca#readme",
   "devDependencies": {
     "eslint": "^8.19.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "sequelize-cli": "^6.4.1"
   },
   "dependencies": {
@@ -27,5 +29,6 @@
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.21.2"
-  }
+  },
+  "keywords": []
 }

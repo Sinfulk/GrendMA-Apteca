@@ -10,12 +10,10 @@ const PORT = process.env.PORT || 8080;
 // подключаем hbs
 app.set("view engine", "hbs");
 
-// добавление локальной переменной во все хбс
-app.use((req, res, next) => {
-  res.locals.hello = "Hello from locals";
-  next();
-});
-
+hbs.registerPartials(path.join(__dirname, "views", "partials"));
+app.use(express.urlencoded({ extended: true })); // чтобы парсить форма
+app.use(express.json()); // чтобы парсить json
+app.use(express.static(path.join(__dirname, "public")));
 app.use("/", mainRouter); // подключили роутер
 
 app.listen(PORT, () => {

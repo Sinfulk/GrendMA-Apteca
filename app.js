@@ -8,7 +8,9 @@ const logger = require('morgan'); // птицын middleware morgan с режи�
 require("dotenv").config();
 
 // Импортируем созданный в отдельный файлах рутеры.
-const mainRouter = require("./routes/mainRouter");
+const mainRouter = require('./routes/mainRouter');
+const entriesRouter = require('./routes/entries');
+const authRouter = require('./routes/auth');
 
 
 const PORT = process.env.PORT || 8080;
@@ -48,6 +50,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/", mainRouter); // подключили роутер
+app.use('/entries', entriesRouter); // подключили роутер
+app.use('/log', authRouter);
 
 app.listen(PORT, () => {
   console.log(`server start PORT ${PORT}`);

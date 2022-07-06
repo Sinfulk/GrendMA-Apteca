@@ -1,0 +1,31 @@
+{
+  "name": "grendma-apteca",
+  "version": "1.0.0",
+  "description": "Grandma's Pharmacy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sinfulk/GrendMA-Apteca.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sinfulk/GrendMA-Apteca/issues"
+  },
+  "homepage": "https://github.com/Sinfulk/GrendMA-Apteca#readme",
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "sequelize-cli": "^6.4.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.21.2"
+  }
+}

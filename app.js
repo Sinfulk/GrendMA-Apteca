@@ -10,7 +10,7 @@ require("dotenv").config();
 // Импортируем созданный в отдельный файлах рутеры.
 const mainRouter = require('./routes/mainRouter');
 const entriesRouter = require('./routes/entries');
-const authRouter = require('./routes/auth');
+const authRouter = require('./routes/auth.rest');
 
 
 const PORT = process.env.PORT || 8080;

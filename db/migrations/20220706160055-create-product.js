@@ -17,16 +17,6 @@ module.exports = {
       picture: {
         type: Sequelize.TEXT
       },
-      user_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-            model: {
-                tableName: 'Users',
-            },
-        key: 'id',
-        },
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -38,6 +28,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Product');
+    await queryInterface.dropTable('Products');
   }
 };

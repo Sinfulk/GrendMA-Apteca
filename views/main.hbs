@@ -1,13 +1,16 @@
 <main role="main">
   <ul class="entries-list no-bullets no-padding">
     {{#each products}}
-      <li class="entry-item pad-b-4">
-        <p><img src="{{this.img}}" alt="sory">
-        <a href="/{{id}}" class="product">{{this.title}}</a>
-        </p>
-        <span class="entry-date block font-3-4 c-lt-gray">Written on {{this.createdAt}}</span>
-        <p class="entry-stub">{{this.body}}</p>
-      </li>
+      <div class="card" id="{{id}}" style="width: 18rem;">
+       <img src="{{this.picture}}" width="200px" class="card-img-top" alt="...">
+       <div class="card-body">
+        <h5 class="card-title">{{this.product_name}}</h5>
+        <p class="card-text">{{this.price}} руб.</p>
+        <a href="#" class="btn btn-primary">В корзину </a>
+      </div>
+</div>
     {{/each}}
   </ul>
 </main>
+
+

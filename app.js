@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const express = require("express");
 
 const app = express();
@@ -12,6 +13,7 @@ require("dotenv").config();
 const mainRouter = require("./routes/mainRouter");
 const entriesRouter = require("./routes/entries");
 const authRouter = require("./routes/auth.rest");
+const basketRouter = require("./routes/basket");
 
 const PORT = process.env.PORT || 8080;
 
@@ -34,7 +36,7 @@ const sessionConfig = {
   secret: process.env.SESSION_SECRET ?? "test", // Секретное слово для шифрования, может быть любым
   store: new FileStore(),
   resave: false, // Пересохранять ли куку при каждом запросе
-  saveUninitialized: true, // Создавать ли сессию без инициализации ключей в req.session
+  saveUninitialized: false, // Создавать ли сессию без инициализации ключей в req.session
   cookie: {
     maxAge: 1000 * 60 * 60 * 12, // Срок истечения годности куки в миллисекундах
     httpOnly: true, // Серверная установка и удаление куки, по умолчанию true
@@ -48,6 +50,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/basket", basketRouter);
 app.use("/", mainRouter);
 app.use("/entries", entriesRouter);
 app.use("/log", authRouter);

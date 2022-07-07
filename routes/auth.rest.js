@@ -1,16 +1,17 @@
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const { User } = require("../db/models");
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { User } = require('../db/models');
 
-router.post("/signup", async (req, res) => {
-  const { user_name, mail, pass } = req.body;
-  const hashedPass = await bcrypt.hash(pass, 6);
+router.post('/signup', async (req, res) => {
+  const { userName, userEmail, userPass } = req.body;
+  const mail = userEmail;
+  const hashedPass = await bcrypt.hash(userPass, 6);
   const [newUser, created] = await User.findOrCreate({
     where: {
       mail,
     },
     defaults: {
-      user_name,
+      user_name: userName,
       pass: hashedPass,
     },
   });
@@ -19,15 +20,16 @@ router.post("/signup", async (req, res) => {
   } else {
     res.sendStatus(501);
   }
-}); //// done
+}); /// / done
 
-router.post("/login", async (req, res) => {
-  const { mail, pass } = req.body;
+router.post('/login', async (req, res) => {
+  const { userEmail, userPass } = req.body;
+  const mail = userEmail;
   const userAuth = await User.findOne({ where: { mail } });
-  if (await bcrypt.compare(pass, userAuth.pass)) {
-    res.json(userAuth);
+  if (await bcrypt.compare(userPass, userAuth.pass)) {
+    return res.json(userAuth);
   }
-  res.sendStatus(300);
-});
+  res.sendStatus(401);
+}); /// /done
 
 module.exports = router;

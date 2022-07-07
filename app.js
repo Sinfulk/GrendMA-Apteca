@@ -43,6 +43,11 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 
+app.use((req, res, next) => {
+  res.locals.userName = req.session?.userName;
+  next();
+});
+
 app.use("/", mainRouter);
 app.use("/entries", entriesRouter);
 app.use("/log", authRouter);

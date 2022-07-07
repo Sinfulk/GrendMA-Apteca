@@ -12,12 +12,13 @@
   <div class='tab-pane fade show active' id='home-tab-pane' role='tabpanel' aria-labelledby='home-tab' tabindex='0'>
     <form action='/entries/login' method='post'>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label">Email адрес</label>
         <input name="userEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div id="emailHelp" class="form-text">Мы никогда не будем делиться вашей электронной почтой с кем-либо еще.
+        </div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
         <input name="userPass" type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <button type="submit" class="btn btn-primary">Log in</button>
@@ -27,24 +28,26 @@
   <div class='tab-pane fade' id='profile-tab-pane' role='tabpanel' aria-labelledby='profile-tab' tabindex='0'>
     <form action='/entries/signup' method='post'>
       <div class="mb-3">
-        <label for="exampleInputNameUser" class="form-label">First name</label>
+        <label for="exampleInputNameUser" class="form-label">Имя</label>
         <input name="userName" type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
         <div id="userName" class="form-text">We'll never share your name with anyone else.</div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label">Email адрес</label>
         <input name="userEmail" type="email" class="form-control" id="exampleInputEmail1"
           aria-describedby="emailHelp" />
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div id="emailHelp" class="form-text">Мы никогда не будем делиться вашей электронной почтой с кем-либо еще.
+        </div>
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="exampleInputPassword1" class="form-label">Пароль</label>
         <input name="userPass" type="password" class="form-control" id="exampleInputPassword1">
       </div>
       <button type="submit" class="btn btn-primary">Log up</button>
-        <label for="exampleInputPassword1" class="form-label">{{message}}</label>
-                <div id="emailHelp" class="form-text">{{message}}</div>
-      </div>
-    </form>
+      {{#if message}}
+      <div id="" class="form-text">{{message}}</div>
+      {{/if}}
   </div>
+  </form>
+</div>
 </div>

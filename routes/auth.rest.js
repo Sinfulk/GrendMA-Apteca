@@ -19,7 +19,7 @@ router.post("/signup", async (req, res) => {
   } else {
     res.sendStatus(501);
   }
-}); //// done
+}); /// / done
 
 router.post("/login", async (req, res) => {
   const { mail, pass } = req.body;

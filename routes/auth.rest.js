@@ -1,8 +1,8 @@
-const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const { User } = require("../db/models");
+const router = require('express').Router();
+const bcrypt = require('bcrypt');
+const { User } = require('../db/models');
 
-router.post("/signup", async (req, res) => {
+router.post('/signup', async (req, res) => {
   const { user_name, mail, pass } = req.body;
   const hashedPass = await bcrypt.hash(pass, 6);
   const [newUser, created] = await User.findOrCreate({
@@ -19,9 +19,9 @@ router.post("/signup", async (req, res) => {
   } else {
     res.sendStatus(501);
   }
-}); //// done
+});
 
-router.post("/login", async (req, res) => {
+router.post('/login', async (req, res) => {
   const { mail, pass } = req.body;
   const userAuth = await User.findOne({ where: { mail } });
   if (await bcrypt.compare(pass, userAuth.pass)) {

@@ -16,3 +16,14 @@ router.get("/", async (req, res) => {
   return res.render("main", { products });
 });
 module.exports = router;
+
+router.get("/product/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(">>>>>>>>>", id);
+    const product = await Product.findOne({ where: { id } });
+    res.json(product);
+  } catch (error) {
+    console.log(error);
+  }
+});

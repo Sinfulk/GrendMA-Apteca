@@ -1,5 +1,5 @@
 {{#if list.length}}
-<div class="basket">
+<div class="main">
 {{#each list}}
   <div class="oneItem">
     <div class="name">{{this.name}}</div>
@@ -11,15 +11,18 @@
       />
     </div>
     <div class="price">{{this.price}}р.</div>
+    <button class="btnDelete">Удалить</button>
   </div>
 {{/each}}
 </div>
 <div class="footer">
   <span>Итого:{{sum}}р.</span>
-  <button class="btn">Купить</button>
+  <button class="btnByu">Купить</button>
 </div>
 {{else}}
   <div class="empty">
     <span>Корзина пуста</span>
   </div>
 {{/if}}
+
+

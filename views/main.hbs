@@ -1,16 +1,18 @@
-<main role="main">
+<main class="main" role="main">
   <ul class="entries-list no-bullets no-padding">
     {{#each products}}
-      <div class="card" id="{{id}}" style="width: 18rem;">
+      <div class="entries-list no-bullets no-padding" class="card" style="width: 18rem;">
        <img src="{{this.picture}}" width="200px" class="card-img-top" alt="...">
        <div class="card-body">
         <h5 class="card-title">{{this.product_name}}</h5>
         <p class="card-text">{{this.price}} руб.</p>
-        <a href="#" class="btn btn-primary">В корзину </a>
+        <a href="#" id="{{id}}" name ="toBusket" class="btn btn-primary ">В корзину </a>
+       </div>
       </div>
-</div>
     {{/each}}
   </ul>
 </main>
+
+
 
 

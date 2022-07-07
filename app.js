@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 8080;
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
 
-
 // Подключаем middleware morgan с режимом логирования "dev", чтобы для каждого HTTP-запроса на сервер в консоль выводилась информация об этом запросе.
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true })); // чтобы парсить форма
@@ -45,7 +44,6 @@ app.use(session(sessionConfig));
 app.use("/", mainRouter);
 app.use("/entries", entriesRouter);
 app.use("/log", authRouter);
-
 
 app.listen(PORT, () => {
   console.log(`server start PORT ${PORT}`);

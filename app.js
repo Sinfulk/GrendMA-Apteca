@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const express = require("express");
 
 const app = express();
@@ -12,6 +13,7 @@ require("dotenv").config();
 const mainRouter = require("./routes/mainRouter");
 const entriesRouter = require("./routes/entries");
 const authRouter = require("./routes/auth.rest");
+const basketRouter = require("./routes/basket");
 
 const PORT = process.env.PORT || 8080;
 
@@ -48,6 +50,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/basket", basketRouter);
 app.use("/", mainRouter);
 app.use("/entries", entriesRouter);
 app.use("/log", authRouter);

@@ -1,5 +1,3 @@
-const { json } = require("sequelize/types");
-
 const main = document.querySelector(".main");
 
 main.addEventListener("click", async (e) => {

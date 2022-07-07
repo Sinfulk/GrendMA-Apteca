@@ -1,0 +1,13 @@
+<main role="main">
+  <ul class="entries-list no-bullets no-padding">
+    {{#each products}}
+      <li class="entry-item pad-b-4">
+        <p><img src="{{this.img}}" alt="sory">
+        <a href="/{{id}}" class="product">{{this.title}}</a>
+        </p>
+        <span class="entry-date block font-3-4 c-lt-gray">Written on {{this.createdAt}}</span>
+        <p class="entry-stub">{{this.body}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</main>

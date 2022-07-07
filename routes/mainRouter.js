@@ -17,4 +17,13 @@ router.get("/", async (req, res) => {
 });
 module.exports = router;
 
-router.get("/:id");
+router.get("/product/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(">>>>>>>>>", id);
+    const product = await Product.findOne({ where: { id } });
+    res.json(product);
+  } catch (error) {
+    console.log(error);
+  }
+});

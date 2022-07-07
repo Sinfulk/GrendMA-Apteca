@@ -21,12 +21,12 @@ hbs.registerPartials(path.join(__dirname, "views", "partials"));
 // Подключаем middleware morgan с режимом логирования "dev", чтобы для каждого HTTP-запроса на сервер в консоль выводилась информация об этом запросе.
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true })); // чтобы парсить форма
-// Подключаем middleware, которое позволяет читать переменные JavaScript, сохранённые в формате JSON в body HTTP-запроса.
-app.use(express.json()); // чтобы парсить json
 // Подключаем middleware, которое сообщает epxress, что в папке "ПапкаПроекта/public" будут находится статические файлы, т.е. файлы доступные для скачивания из других приложений.
 app.use(express.static(path.join(__dirname, "public")));
 // Подключаем middleware, которое позволяет читать содержимое body из HTTP-запросов типа POST, PUT и DELETE.
 app.use(express.urlencoded({ extended: true }));
+// Подключаем middleware, которое позволяет читать переменные JavaScript, сохранённые в формате JSON в body HTTP-запроса.
+app.use(express.json()); // чтобы парсить json
 
 const sessionConfig = {
   name: "user_sid", // Имя куки для хранения id сессии. По умолчанию - connect.sid

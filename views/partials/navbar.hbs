@@ -1,0 +1,13 @@
+<nav class="clearfix mar-b-1">
+    <ul class="no-bullets no-margin no-padding right">
+        {{#if userName}}
+        <li class="pipe-separate t-light-green left">{{userName}}</li>
+        <li class="pipe-separate t-light-green left"><a href="/entries/logout">Выйти</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/">Home</a></li>
+        {{else}}
+        <li class="pipe-separate t-light-green left"><a href="/entries/auth">Войти</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/">Домой</a></li>
+        <li class="pipe-separate t-light-green left"><a href="/entries/backet">Корзина</a></li>
+        {{/if}}
+    </ul>
+</nav>

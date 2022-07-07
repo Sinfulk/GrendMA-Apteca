@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const hbs = require("hbs");
 const path = require("path");
 const session = require("express-session"); // птицын подключил сессию
 const FileStore = require("session-file-store")(session); // птицын подключил
@@ -17,6 +16,7 @@ const PORT = process.env.PORT || 8080;
 // подключаем hbs
 app.set("view engine", "hbs");
 hbs.registerPartials(path.join(__dirname, "views", "partials"));
+
 
 // Подключаем middleware morgan с режимом логирования "dev", чтобы для каждого HTTP-запроса на сервер в консоль выводилась информация об этом запросе.
 app.use(logger("dev"));
@@ -45,6 +45,7 @@ app.use(session(sessionConfig));
 app.use("/", mainRouter);
 app.use("/entries", entriesRouter);
 app.use("/log", authRouter);
+
 
 app.listen(PORT, () => {
   console.log(`server start PORT ${PORT}`);

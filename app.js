@@ -1,6 +1,8 @@
 const express = require("express");
+
 const app = express();
 const path = require("path");
+const hbs = require("hbs");
 const session = require("express-session"); // птицын подключил сессию
 const FileStore = require("session-file-store")(session); // птицын подключил
 const logger = require("morgan"); // птицын middleware morgan с режимом логирования "dev",

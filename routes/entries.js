@@ -8,8 +8,7 @@ router.get('/auth', (req, res) => {
 
 router.get('/logout', (req, res) => { /// убивает сессию
   req.session.destroy();
-  res.clearCookie('user_sid');
-  res.redirect('/');
+  res.clearCookie('user_sid').redirect('/');
 });
 
 ///  POST signup

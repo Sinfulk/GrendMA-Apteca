@@ -11,6 +11,10 @@ router.get('/logout', (req, res) => { /// убивает сессию
   res.clearCookie('user_sid').redirect('/');
 });
 
+router.get('/backet', (req, res) => { /// убивает сессию
+  res.render('/bascket');
+});
+
 ///  POST signup
 router.post('/signup', async (req, res) => {
   const response = await fetch(

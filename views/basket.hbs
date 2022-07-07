@@ -1,0 +1,25 @@
+{{#if list.length}}
+<div class="basket">
+{{#each list}}
+  <div class="oneItem">
+    <div class="name">{{this.name}}</div>
+    <div class="divImg">
+      <img
+        class="img"
+        src={{this.picture}}
+        alt=""
+      />
+    </div>
+    <div class="price">{{this.price}}р.</div>
+  </div>
+{{/each}}
+</div>
+<div class="footer">
+  <span>Итого:{{sum}}р.</span>
+  <button class="btn">Купить</button>
+</div>
+{{else}}
+  <div class="empty">
+    <span>Корзина пуста</span>
+  </div>
+{{/if}}

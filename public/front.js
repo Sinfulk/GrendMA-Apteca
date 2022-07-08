@@ -1,6 +1,6 @@
 console.log("i am end");
 getProducts = () => {
-  const productLocalStorage = localStorage.getItem("arr");
+  const productLocalStorage = localStorage.getItem("busket");
   if (productLocalStorage !== null) {
     return JSON.parse(productLocalStorage);
   }
@@ -14,20 +14,16 @@ const container = document.querySelector(".container1");
 const HTMLs = products
   .map((el) => {
     return `
-<div class="oneItem">
-<div class="name">${el.name}</div>
-<div class="divImg">
-  <img
-    class="img"
-    src=${el.picture}}
-    alt=""
-  />
-</div>
-<div class="price">{{this.price}}р.</div>
-<button class="btnDelete">Удалить</button>
-</div>
+    <div class="entries-list no-bullets no-padding" class="card" style="width: 18rem;">
+    <img src="${el.picture}" width="200px" class="card-img-top" alt="...">
+    <div class="card-body">
+     <h5 class="card-title">${el.product_name}</h5>
+     <p class="card-text">${el.price} руб.</p>
+     <a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary "> Удалить </a>
+    </div>
+   </div>
 `;
   })
   .reduce((a, b) => a + b, "");
 
-container.insertAdjacentHTML("beforebegin", HTMLs);
+container.insertAdjacentHTML("afterbegin", HTMLs);

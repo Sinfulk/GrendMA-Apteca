@@ -1,16 +1,18 @@
-getProducts() {
-    const productLocalStorage = localStorage.getItem('arr');
-    if (productLocalStorage !== null) {
-      return JSON.parse(productLocalStorage);
-    }
-    return [];
-}
+console.log("i am end");
+getProducts = () => {
+  const productLocalStorage = localStorage.getItem("arr");
+  if (productLocalStorage !== null) {
+    return JSON.parse(productLocalStorage);
+  }
+  return [];
+};
 
 const products = getProducts();
+console.log(products);
+const container = document.querySelector(".container1");
 
-const container = document.querySelector('.container1');
-
-const HTMLs = products.map(el => {
+const HTMLs = products
+  .map((el) => {
     return `
 <div class="oneItem">
 <div class="name">${el.name}</div>
@@ -24,7 +26,8 @@ const HTMLs = products.map(el => {
 <div class="price">{{this.price}}р.</div>
 <button class="btnDelete">Удалить</button>
 </div>
-`
-}).reduce((a,b) => a + b, '');
+`;
+  })
+  .reduce((a, b) => a + b, "");
 
-container.insertAdjacentHTML("beforebegin", HTMLs)
+container.insertAdjacentHTML("beforebegin", HTMLs);

@@ -1,4 +1,4 @@
-<nav class="clearfix mar-b-1">
+{{!-- <nav class="clearfix mar-b-1">
     <ul class="no-bullets no-margin no-padding right">
         {{#if userName}}
         <li class="pipe-separate t-light-green left">{{userName}}</li>
@@ -11,4 +11,27 @@
         <li class="pipe-separate t-light-green left"><a href="/basket">Корзина</a></li>
         {{/if}}
     </ul>
+</nav> --}}
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="http://msk24.net/board_foto/1588704634foto1_small.jpg" alt="Pharmacy"> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+    {{#if userName}}
+        <a class="nav-link" href="/entries/personalArea">{{userName}}</a> 
+        <a class="nav-link" href="/entries/logout">Выйти</a> 
+        <a class="nav-link" href="/basket">Корзина</a>
+        <a class="nav-link active" aria-current="page" href="/">Домой</a>
+    {{else}}
+        <a class="nav-link" href="/entries/auth">Войти</a> 
+        <a class="nav-link" href="/basket">Корзина</a>
+        <a class="nav-link active" aria-current="page" href="/">Домой</a>
+    {{/if}}
+      </div>        
+    </div>
+  </div>
 </nav>

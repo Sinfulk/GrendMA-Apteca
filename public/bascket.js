@@ -1,5 +1,5 @@
 const main = document.querySelector(".main");
-main.addEventListener("click", async (e) => {
+main?.addEventListener("click", async (e) => {
   e.preventDefault();
   if (e.target.name === "toBusket") {
     const response = await fetch(

@@ -1,5 +1,4 @@
 const container = document.querySelector(".container1");
-const zakaz = document.querySelector(".zakaz");
 getProducts = () => {
   const productLocalStorage = localStorage.getItem("busket");
   if (productLocalStorage !== null) {
@@ -26,9 +25,9 @@ const HTMLs = getProducts()
   .reduce((a, b) => a + b, "");
 
 const divZakaz = `<div>
-  <a href="#" id="zakaz" name ="toBusket" class="btn btn-primary "> Оформить заказ </a>
-  Итого:<span class="sum">${sum()}</span>руб.
-  </div>`;
+<a href="#" id="zakaz" name ="toBusket" class="btn btn-primary "> Оформить заказ </a>
+Итого:<span class="sum">${sum()}</span>руб.
+</div>`;
 
 container.insertAdjacentHTML("afterbegin", HTMLs);
 container.insertAdjacentHTML("beforeend", divZakaz);
@@ -37,9 +36,8 @@ container.addEventListener("click", async (e) => {
   e.preventDefault();
   const id = +e.target.id;
   const card = document.querySelector(`[data-id="${id}"]`);
-  console.log(id);
+
   const productLocalStorage = localStorage.getItem("busket");
-  console.log();
   if (e.target.name === "toBusket") {
     localStorage.setItem(
       "busket",
@@ -53,18 +51,17 @@ container.addEventListener("click", async (e) => {
   }
 });
 
+const zakaz = document.querySelector("#zakaz");
+console.log("####", zakaz);
 zakaz.addEventListener("click", async (e) => {
   e.preventDefault();
   if (e.target.name === "toBusket") {
-    const response = await fetch(
-      `http://localhost:3000/product/${e.target.id}`,
-      {
-        method: "post",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: localStorage.getItem("busket"),
-      }
-    );
+    const response = await fetch(`http://localhost:3000/order/`, {
+      method: "post",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: localStorage.getItem("busket"),
+    });
   }
 });

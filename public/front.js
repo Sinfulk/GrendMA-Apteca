@@ -24,7 +24,7 @@ const HTMLs = products
   />
 </div>
 <div class="price">{{this.price}}р.</div>
-<button class="btnDelete">Удалить</button>
+<button class="btnDelete">Удалить</button>git 
 </div>
 `;
   })

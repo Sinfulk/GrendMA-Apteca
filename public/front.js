@@ -1,36 +1,70 @@
-console.log('i am end');
+const container = document.querySelector(".container1");
+const zakaz = document.querySelector(".zakaz");
 getProducts = () => {
-  const productLocalStorage = localStorage.getItem('busket');
+  const productLocalStorage = localStorage.getItem("busket");
   if (productLocalStorage !== null) {
     return JSON.parse(productLocalStorage);
   }
   return [];
 };
 
-const products = getProducts();
-console.log(products);
-const container = document.querySelector('.main');
+let sum = () => getProducts().reduce((akb, el) => akb + el.price, 0);
 
-const HTMLs = products
-  .map(
-    (el) => `
-   <div class="main">
-    <div class="oneItem">
-      <div class="name">${el.product_name}</div>
-      <div class="divImg">
-        <img
-          class="img"
-          src=${el.picture}
-          alt=""
-        />
-      </div>
-      <div class="price">${el.price} ₽.</div>
-      <a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary";">В корзину </a>
-    </div>
+const HTMLs = getProducts()
+  .map((el) => {
+    return `
+  <div data-id="${el.id}" class="entries-list no-bullets no-padding" class="card" style="width: 18rem;">
+  <img src="${el.picture}" width="200px" class="card-img-top" alt="...">
+  <div class="card-body">
+  <h5 class="card-title">${el.product_name}</h5>
+  <p class="card-text">${el.price} руб.</p>
+  <a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary "> Удалить </a>
   </div>
-`,
-  )
-  .reduce((a, b) => a + b, '');
+  </div>
+  `;
+  })
+  .reduce((a, b) => a + b, "");
 
-container.insertAdjacentHTML('afterbegin', HTMLs);
+const divZakaz = `<div>
+  <a href="#" id="zakaz" name ="toBusket" class="btn btn-primary "> Оформить заказ </a>
+  Итого:<span class="sum">${sum()}</span>руб.
+  </div>`;
 
+container.insertAdjacentHTML("afterbegin", HTMLs);
+container.insertAdjacentHTML("beforeend", divZakaz);
+
+container.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const id = +e.target.id;
+  const card = document.querySelector(`[data-id="${id}"]`);
+  console.log(id);
+  const productLocalStorage = localStorage.getItem("busket");
+  console.log();
+  if (e.target.name === "toBusket") {
+    localStorage.setItem(
+      "busket",
+      JSON.stringify(
+        JSON.parse(productLocalStorage).filter((el) => el.id !== id)
+      )
+    );
+    const summ = document.querySelector(".sum");
+    summ.innerText = `${sum()}`;
+    card.remove();
+  }
+});
+
+zakaz.addEventListener("click", async (e) => {
+  e.preventDefault();
+  if (e.target.name === "toBusket") {
+    const response = await fetch(
+      `http://localhost:3000/product/${e.target.id}`,
+      {
+        method: "post",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: localStorage.getItem("busket"),
+      }
+    );
+  }
+});

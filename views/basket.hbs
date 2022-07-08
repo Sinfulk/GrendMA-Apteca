@@ -1,34 +1,8 @@
-<div class="container1">
-<div>
-<a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary "> Оформить заказ </a>
-<span>Итого:{{sum}}руб.</span>
+<div class="main">
+<div class="footer">
+<a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary"> Оформить заказ </a>
+<span>Итого:{{sum}}₽</span>
 </div>
 </div>
 
 <script defer src="/front.js"></script>
-{{!-- {{#if list.length}}
-<div class="main">
-{{#each list}}
-  <div class="oneItem">
-    <div class="name">{{this.name}}</div>
-    <div class="divImg">
-      <img
-        class="img"
-        src={{this.picture}}
-        alt=""
-      />
-    </div>
-    <div class="price">{{this.price}}р.</div>
-    <button class="btnDelete">Удалить</button>
-  </div>
-{{/each}}
-</div>
-<div class="footer">
-  <span>Итого:{{sum}}р.</span>
-  <button class="btnByu">Купить</button>
-</div>
-{{else}}
-  <div class="empty">
-    <span>Корзина пуста</span>
-  </div>
-{{/if}} --}}

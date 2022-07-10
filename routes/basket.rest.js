@@ -1,18 +1,18 @@
-const router = require("express").Router();
-const { Order } = require("../db/models");
+const router = require('express').Router();
+const { Order } = require('../db/models');
 
 // const req.body{product:[1, 2, 3, 4, 5]}
 
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   // создание нового заказа с перечнем товаров
   const { user_id } = req.session;
   const product_id = req.body; // [1,2,3,4,5]
   const numberOrder = await Order.findAll({
-    attributes: ["order"],
+    attributes: ['order'],
     where: { user_id },
   });
 
-  const lastIndex = numberOrder.lastIndexOf();
+  const lastIndex = numberOrder.length - 1;
   console.log(numberOrder);
   if (numberOrder.length) {
     for (let i = 0; i < product_id.length; i++) {

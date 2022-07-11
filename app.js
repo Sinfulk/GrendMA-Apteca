@@ -4,8 +4,10 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const hbs = require("hbs");
+// сессии
 const session = require("express-session"); // птицын подключил сессию
 const FileStore = require("session-file-store")(session); // птицын подключил
+
 const logger = require("morgan"); // птицын middleware morgan с режимом логирования "dev",
 require("dotenv").config();
 
@@ -32,6 +34,7 @@ app.use(express.urlencoded({ extended: true }));
 // Подключаем middleware, которое позволяет читать переменные JavaScript, сохранённые в формате JSON в body HTTP-запроса.
 app.use(express.json()); // чтобы парсить json
 
+// настройка сессии
 const sessionConfig = {
   name: "user_sid", // Имя куки для хранения id сессии. По умолчанию - connect.sid
   secret: process.env.SESSION_SECRET ?? "test", // Секретное слово для шифрования, может быть любым
@@ -43,9 +46,10 @@ const sessionConfig = {
     httpOnly: true, // Серверная установка и удаление куки, по умолчанию true
   },
 };
-
+// подключили сесии
 app.use(session(sessionConfig));
 
+// миделвар присваевает сесии  имя юзера
 app.use((req, res, next) => {
   res.locals.userName = req.session?.userName;
   next();

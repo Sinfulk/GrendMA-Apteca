@@ -20,7 +20,6 @@ module.exports = router;
 router.get("/product/:id", async (req, res) => {
   try {
     const { id } = req.params;
-    console.log(">>>>>>>>>", id);
     const product = await Product.findOne({ where: { id } });
     res.json(product);
   } catch (error) {

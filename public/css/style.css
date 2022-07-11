@@ -25,6 +25,11 @@
   flex-wrap: wrap;
 }
 
+.container1{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .footer {
   width: 90vw;
   margin: 0 auto;

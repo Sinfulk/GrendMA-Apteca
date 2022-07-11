@@ -12,13 +12,16 @@ let sum = () => getProducts().reduce((akb, el) => akb + el.price, 0);
 const HTMLs = getProducts()
   .map((el) => {
     return `
-  <div data-id="${el.id}" class="entries-list no-bullets no-padding" class="card" style="width: 18rem;">
-  <img src="${el.picture}" width="200px" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">${el.product_name}</h5>
-  <p class="card-text">${el.price} руб.</p>
-  <a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary "> Удалить </a>
+  <div data-id="${el.id}" class="oneItem">
+  <h5 class="name"> ${el.product_name}</h5>
+  <div class="divImg">
+  <img 
+    class="img" 
+    src="${el.picture}" 
+    alt="...">
   </div>
+  <div class="price">${el.price} ₽.</div>
+  <a href="#" id="${el.id}" name ="toBusket" class="btn btn-primary "> Удалить </a>
   </div>
   `;
   })
@@ -30,7 +33,7 @@ const divZakaz = `<div>
 </div>`;
 
 container.insertAdjacentHTML("afterbegin", HTMLs);
-container.insertAdjacentHTML("beforeend", divZakaz);
+container.insertAdjacentHTML("afterend", divZakaz);
 
 container.addEventListener("click", async (e) => {
   e.preventDefault();
@@ -52,7 +55,6 @@ container.addEventListener("click", async (e) => {
 });
 
 const zakaz = document.querySelector("#zakaz");
-console.log("####", zakaz);
 zakaz.addEventListener("click", async (e) => {
   e.preventDefault();
   if (e.target.name === "toBusket") {
@@ -63,5 +65,28 @@ zakaz.addEventListener("click", async (e) => {
       },
       body: localStorage.getItem("busket"),
     });
+    if (response.ok) {
+      const order = getProducts()
+        .map((el) => {
+          return `<div class="name">${el.product_name} - ${el.price} ₽</div>`;
+        })
+        .reduce((akb, el) => akb + el, "");
+      container.insertAdjacentHTML("afterend", order);
+      container.insertAdjacentHTML(
+        "afterend",
+        "<h5> Заказ Успешно оформлен</h5>"
+      );
+      container.remove();
+      zakaz.remove();
+
+      localStorage.clear();
+    } else {
+      container.insertAdjacentHTML(
+        "afterend",
+        "<h5> Вы не авторезированы</h5>"
+      );
+      container.remove();
+      zakaz.remove();
+    }
   }
 });

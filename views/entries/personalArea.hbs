@@ -1,0 +1,29 @@
+<div class="modal" tabindex="-1">
+    {{#each orders}}
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Заказ номер: {{this.id}}</h5>
+      </div>
+      <div class="modal-body">
+        {{#each orders.product_id}}
+        <li><p>{{this.product_id.product_name}}</p></li>
+        {{/each}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Повторить заказ</button>
+      </div>
+    </div>
+  </div>
+   {{/each}}
+</div>
+
+<div>
+    {{#each orders}}
+    <ul>Заказ номер: {{this.order}}</ul>
+    <li>товар: {{this.product_id}}</li>
+        {{#each this.product_id}}
+        <li>{{this.product_id.product_name}}</li>
+        {{/each}}
+    {{/each}}
+</div>

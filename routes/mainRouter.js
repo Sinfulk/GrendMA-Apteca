@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
 
   return res.render("main", { products });
 });
-module.exports = router;
 
 router.get("/product/:id", async (req, res) => {
   try {
@@ -26,3 +25,5 @@ router.get("/product/:id", async (req, res) => {
     console.log(error);
   }
 });
+
+module.exports = router;

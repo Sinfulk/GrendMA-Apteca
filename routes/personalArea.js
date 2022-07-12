@@ -1,15 +1,31 @@
 const router = require('express').Router();
-const { Order, User } = require('../db/models');
+const {
+  Order, User, Cart, Product,
+} = require('../db/models');
 
 router.get('/', async (req, res) => {
   let orders;
-  console.log(req.session.user_id);
+  // console.log(req.session.user_id);
   try {
-    orders = await User.findByPk(req.session.user_id, {
-      include: { 
-        model: Order,
-         
-      },
+    orders = await Order.findAll({
+      where: { user_id: req.session.user_id },
+      include: [
+        {
+          model: User,
+          attributes: ['user_name', 'mail'],
+        },
+        {
+          model: Cart,
+          attributes: ['order_id', 'product_id', 'count'],
+          include: [
+            {
+              model: Product,
+              attributes: ['product_name', 'price', 'picture'],
+            }],
+        },
+      ],
+      // raw: true,
+      // nest: true,
     });
     // orders = await User.findAll({
     //   where: { mail: req.session.userEmail },
@@ -21,7 +37,7 @@ router.get('/', async (req, res) => {
       error: {},
     });
   }
-  console.log(orders);
+  console.log(orders[0].Carts[0].Product.product_name);
   return res.render('entries/personalArea', { orders });
 });
 

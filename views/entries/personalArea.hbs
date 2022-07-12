@@ -1,29 +1,24 @@
-<div class="modal" tabindex="-1">
+{{!-- <div>
     {{#each orders}}
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Заказ номер: {{this.id}}</h5>
-      </div>
-      <div class="modal-body">
-        {{#each orders.product_id}}
-        <li><p>{{this.product_id.product_name}}</p></li>
+    <ul>Заказ номер: {{this.id}}</ul>
+    <li>товар: {{this.product_id}}</li>
+        {{#each this.User}}
+        <li>{{this.mail}}</li>
         {{/each}}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Повторить заказ</button>
-      </div>
+    {{/each}}
+</div> --}}
+<div id="container">
+    {{#each orders}}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Заказ номер: {{this.id}}</h5>
+      {{#each this.Carts}}
+            <p class="card-text">товар: {{this.Product.product_name}}</p>
+      {{/each}}
+
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
     </div>
   </div>
-   {{/each}}
-</div>
-
-<div>
-    {{#each orders}}
-    <ul>Заказ номер: {{this.order}}</ul>
-    <li>товар: {{this.product_id}}</li>
-        {{#each this.product_id}}
-        <li>{{this.product_id.product_name}}</li>
-        {{/each}}
     {{/each}}
 </div>

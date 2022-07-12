@@ -7,22 +7,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      order: {
-        type: Sequelize.INTEGER,
-      },
       user_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Users', // tableName
+          model: 'Users',
           key: 'id',
         },
       },
-      product_id: {
+      status: {
         type: Sequelize.INTEGER,
-        references: {
-          model: 'Products', // tableName
-          key: 'id',
-        },
       },
       createdAt: {
         allowNull: false,

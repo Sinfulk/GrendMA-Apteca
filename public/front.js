@@ -76,10 +76,11 @@ zakaz.addEventListener('click', async (e) => {
       zakaz.remove();
 
       localStorage.clear();
-    } else {
-      window.location.replace('/entries/auth');
-      container.remove();
-      zakaz.remove();
     }
+    // else {
+    // window.location.replace('/entries/auth');
+    // container.remove();
+    // zakaz.remove();
+    // }
   }
 });

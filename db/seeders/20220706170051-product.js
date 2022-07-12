@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
@@ -10,6 +8,7 @@ module.exports = {
           price: 1562,
           picture:
             'https://images.apteka.ru/origin_b1616696-28b1-4deb-831e-ac880d56015a.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -18,6 +17,7 @@ module.exports = {
           price: 308,
           picture:
             'https://images.apteka.ru/original_c76b7ab0-9d45-4e34-b9d9-187728b4e0e1.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -26,6 +26,7 @@ module.exports = {
           price: 265,
           picture:
             'https://images.apteka.ru/origin_3b887255-4205-4498-9c12-d2ecf78c3b41.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -34,6 +35,7 @@ module.exports = {
           price: 110,
           picture:
             'https://images.apteka.ru/origin_792d660f-e76d-4c91-b69b-3f07cfe58910.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -42,6 +44,7 @@ module.exports = {
           price: 3066,
           picture:
             'https://images.apteka.ru/origin_b4cd8f11-635b-4226-a2e5-b02b414a37a5.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -50,6 +53,7 @@ module.exports = {
           price: 471,
           picture:
             'https://images.apteka.ru/original_2083a40b-7fa4-4913-8977-a338c0a2e467.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -58,6 +62,7 @@ module.exports = {
           price: 207,
           picture:
             'https://images.apteka.ru/original_aed5c0cf-2f2c-4db0-a8ae-be0e9ecf6d2a.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -66,6 +71,7 @@ module.exports = {
           price: 133,
           picture:
             'https://images.apteka.ru/original_da9caaeb-7521-4f96-942d-5537ea912136.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -74,6 +80,7 @@ module.exports = {
           price: 48,
           picture:
             'https://images.apteka.ru/original_8576fdee-3f3a-4c8c-b395-6413ad05aa5d.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -82,6 +89,7 @@ module.exports = {
           price: 274,
           picture:
             'https://images.apteka.ru/original_06e47a39-bad0-492a-b716-14add3631604.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -90,6 +98,7 @@ module.exports = {
           price: 863,
           picture:
             'https://images.apteka.ru/origin_39059ad3-4902-4a5b-b893-4550d45eeab6.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -98,6 +107,7 @@ module.exports = {
           price: 314,
           picture:
             'https://images.apteka.ru/original_f52b01ab-772e-48c1-b8bc-d3dd51cda8d3.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -106,6 +116,7 @@ module.exports = {
           price: 123,
           picture:
             'https://images.apteka.ru/origin_9e9bda03-6f07-4713-bea4-3ecde7692d4c.webp',
+          stock: 1000,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

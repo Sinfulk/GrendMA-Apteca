@@ -28,6 +28,7 @@ router.post("/signup", async (req, res) => {
     const newUser = await response.json();
     req.session.userName = newUser.user_name;
     req.session.user_id = newUser.id;
+    req.session.userEmail = newUser.mail;
     res.redirect("/");
   } else {
     const message = "Такой пользователь уже существует!";
@@ -51,6 +52,7 @@ router.post("/login", async (req, res) => {
     const userAuth = await response.json();
     req.session.userName = userAuth.user_name;
     req.session.user_id = userAuth.id;
+    req.session.userEmail = userAuth.mail;
     res.redirect("/");
   } else {
     const message = "Не верное имя пользователя или пароль!";
